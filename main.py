@@ -35,16 +35,16 @@ class Rocket(GameSprite):
     def move(self):
         keys = key.get_pressed()
         if keys[K_UP] and self.rect.y > 0:
-            self.rect.y -= 1
+            self.rect.y -= 10
         if keys[K_DOWN] and self.rect.y < win_height - 150:
-            self.rect.y += 1
+            self.rect.y += 10
 
     def move_2(self):
         keys = key.get_pressed()
         if keys[K_w] and self.rect.y> 0:
-            self.rect.y -= 1
+            self.rect.y -= 10
         if keys[K_s] and self.rect.y < win_height - 150:
-            self.rect.y += 1
+            self.rect.y += 10
 
 rocket1 =  Rocket('Rocket.png', 30, 200, 50, 150, 10)
 rocket2 =  Rocket('Rocket.png', 519, 200, 50, 150, 10)
@@ -64,9 +64,9 @@ while game:
 
             dy *= -1
         if ball.rect.x < 0:
-            finish = True
+            game = False
         if ball.rect.x < 0:
-            finish = True
+            game = False
 
         window.blit(background, (0, 0))
         rocket1.reset()
