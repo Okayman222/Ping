@@ -6,6 +6,13 @@ win_height = 500
 dx = 5
 dy = 5
 
+font.init()
+font1 = font.Font(None, 50)
+lose  = font1.render('YOU LOSE1', True, (180, 0,0))
+lose1  = font1.render('YOU LOSE2', True, (180, 0,0))
+
+
+
 window = display.set_mode((win_width,win_height))
 display.set_caption('Ping pong')
 background = transform.scale(image.load('wall.jpg'),(win_width,win_height))
@@ -63,10 +70,6 @@ while game:
         if ball.rect.y > win_height - 50 or ball.rect.y < 0:
 
             dy *= -1
-        if ball.rect.x < 0:
-            game = False
-        if ball.rect.x < 0:
-            game = False
 
         window.blit(background, (0, 0))
         rocket1.reset()
@@ -76,6 +79,13 @@ while game:
         ball.reset()
         ball.rect.x += dx
         ball.rect.y += dy
+        if ball.rect.x < 0:
+            window.blit(lose, (200, 200))
+            finish = True
+
+        if ball.rect.x >= 555:
+            window.blit(lose1, (200, 200))
+            finish = True
 
     display.update()
     clock.tick(60)
